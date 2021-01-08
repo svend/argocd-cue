@@ -4,9 +4,9 @@ import (
   "k8s.io/api/core/v1"
 )
 
-pod: [string]: v1.Pod
+pod: [string]: v1.#Pod
 
-pod: <Name>: {
+pod: [Name=_]: {
 	apiVersion: "v1"
 	kind:       "Pod"
 	metadata: {
@@ -25,5 +25,5 @@ pod: <Name>: {
 }
 
 for x in [ "test1", "test2", "test3" ] {
-	pod "\(x)": {}
+	pod: "\(x)": {}
 }

@@ -5,7 +5,7 @@ import (
 	"tool/cli"
 )
 
-objects: [ x for v in objectSets for x in v ]
+objects: [ for v in objectSets for x in v {x} ]
 
 objectSets: [
 	pod,

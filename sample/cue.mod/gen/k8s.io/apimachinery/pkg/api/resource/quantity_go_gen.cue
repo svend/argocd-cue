@@ -62,19 +62,25 @@ package resource
 // +protobuf.options.(gogoproto.goproto_stringer)=false
 // +k8s:deepcopy-gen=true
 // +k8s:openapi-gen=true
-Quantity :: _
+#Quantity: _
 
 // CanonicalValue allows a quantity amount to be converted to a string.
-CanonicalValue :: _
+#CanonicalValue: _
 
 // Format lists the three possible formattings of a quantity.
-Format :: string // enumFormat
+#Format: string // #enumFormat
 
-enumFormat ::
-	DecimalExponent |
-	BinarySI |
-	DecimalSI
+#enumFormat:
+	#DecimalExponent |
+	#BinarySI |
+	#DecimalSI
 
-DecimalExponent :: Format & "DecimalExponent"
-BinarySI ::        Format & "BinarySI"
-DecimalSI ::       Format & "DecimalSI"
+#DecimalExponent: #Format & "DecimalExponent"
+#BinarySI:        #Format & "BinarySI"
+#DecimalSI:       #Format & "DecimalSI"
+
+// splitREString is used to separate a number from its suffix; as such,
+// this is overly permissive, but that's OK-- it will be checked later.
+_#splitREString: "^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$"
+
+_#int64QuantityExpectedBytes: 18
